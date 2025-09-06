@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questionnaire EquiWorld - Votre avis compte!</title>
+    <title>Questionnaire Écosystème Équestre - Votre avis compte!</title>
     <style>
         * {
             margin: 0;
@@ -314,7 +314,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>EquiWorld</h1>
+            <h1>Écosystème Équestre Digital</h1>
             <p>Votre avis compte pour révolutionner le monde équestre !</p>
         </div>
 
@@ -322,7 +322,7 @@
             <div class="progress-fill" id="progressBar"></div>
         </div>
 
-        <form id="equiworldForm" class="form-content" name="questionnaire-equiworld" method="POST" netlify netlify-honeypot="bot-field">
+        <form id="equiForm" class="form-content" name="questionnaire-ecosysteme-equestre" method="POST" netlify netlify-honeypot="bot-field">
             <!-- Champ anti-spam Netlify -->
             <div style="display: none;">
                 <input name="bot-field" />
@@ -392,107 +392,165 @@
 
             <!-- Question 3: EquiDeal -->
             <div class="question-group" data-question="3">
-                <div class="question-number">Question 3/8</div>
-                <div class="question">EquiDeal - Annuaire des professionnels équestres + marketplace. Seriez-vous intéressé(e) ? <span class="required">*</span></div>
+                <div class="question-number">Question 3/10</div>
+                <div class="question">Plateforme A - Annuaire des professionnels équestres + marketplace (vente matériel, chevaux). Seriez-vous intéressé(e) ? <span class="required">*</span></div>
                 <div class="options">
                     <div class="option">
-                        <input type="radio" id="equideal_tres" name="equideal" value="tres_interesse" required>
-                        <label for="equideal_tres">Très intéressé(e)</label>
+                        <input type="radio" id="plateformea_tres" name="plateformea" value="tres_interesse" required>
+                        <label for="plateformea_tres">Très intéressé(e)</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="equideal_moyennement" name="equideal" value="moyennement" required>
-                        <label for="equideal_moyennement">Moyennement intéressé(e)</label>
+                        <input type="radio" id="plateformea_moyennement" name="plateformea" value="moyennement" required>
+                        <label for="plateformea_moyennement">Moyennement intéressé(e)</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="equideal_peu" name="equideal" value="peu_interesse" required>
-                        <label for="equideal_peu">Peu intéressé(e)</label>
+                        <input type="radio" id="plateformea_peu" name="plateformea" value="peu_interesse" required>
+                        <label for="plateformea_peu">Peu intéressé(e)</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="equideal_pas" name="equideal" value="pas_interesse" required>
-                        <label for="equideal_pas">Pas intéressé(e)</label>
+                        <input type="radio" id="plateformea_pas" name="plateformea" value="pas_interesse" required>
+                        <label for="plateformea_pas">Pas intéressé(e)</label>
                     </div>
                 </div>
-                <div class="error-message" id="error-equideal">Veuillez sélectionner votre niveau d'intérêt.</div>
+                <div class="error-message" id="error-plateformea">Veuillez sélectionner votre niveau d'intérêt.</div>
             </div>
 
             <!-- Question 4: EquiJob -->
             <div class="question-group" data-question="4">
-                <div class="question-number">Question 4/8</div>
-                <div class="question">EquiJob - Plateforme de recrutement pour personnel équestre temporaire. Seriez-vous intéressé(e) ? <span class="required">*</span></div>
+                <div class="question-number">Question 4/10</div>
+                <div class="question">Plateforme B - Recrutement de personnel équestre temporaire (palefreniers, grooms, etc.). Seriez-vous intéressé(e) ? <span class="required">*</span></div>
                 <div class="options">
                     <div class="option">
-                        <input type="radio" id="equijob_tres" name="equijob" value="tres_interesse" required>
-                        <label for="equijob_tres">Très intéressé(e)</label>
+                        <input type="radio" id="plateformeb_tres" name="plateformeb" value="tres_interesse" required>
+                        <label for="plateformeb_tres">Très intéressé(e)</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="equijob_moyennement" name="equijob" value="moyennement" required>
-                        <label for="equijob_moyennement">Moyennement intéressé(e)</label>
+                        <input type="radio" id="plateformeb_moyennement" name="plateformeb" value="moyennement" required>
+                        <label for="plateformeb_moyennement">Moyennement intéressé(e)</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="equijob_peu" name="equijob" value="peu_interesse" required>
-                        <label for="equijob_peu">Peu intéressé(e)</label>
+                        <input type="radio" id="plateformeb_peu" name="plateformeb" value="peu_interesse" required>
+                        <label for="plateformeb_peu">Peu intéressé(e)</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="equijob_pas" name="equijob" value="pas_interesse" required>
-                        <label for="equijob_pas">Pas intéressé(e)</label>
+                        <input type="radio" id="plateformeb_pas" name="plateformeb" value="pas_interesse" required>
+                        <label for="plateformeb_pas">Pas intéressé(e)</label>
                     </div>
                 </div>
-                <div class="error-message" id="error-equijob">Veuillez sélectionner votre niveau d'intérêt.</div>
+                <div class="error-message" id="error-plateformeb">Veuillez sélectionner votre niveau d'intérêt.</div>
             </div>
 
             <!-- Question 5: EquiDrive -->
             <div class="question-group" data-question="5">
-                <div class="question-number">Question 5/8</div>
-                <div class="question">EquiDrive - Location de vans entre particuliers pour transport de chevaux. Seriez-vous intéressé(e) ? <span class="required">*</span></div>
+                <div class="question-number">Question 5/10</div>
+                <div class="question">Plateforme C - Location de véhicules entre particuliers pour transport de chevaux. Seriez-vous intéressé(e) ? <span class="required">*</span></div>
                 <div class="options">
                     <div class="option">
-                        <input type="radio" id="equidrive_tres" name="equidrive" value="tres_interesse" required>
-                        <label for="equidrive_tres">Très intéressé(e)</label>
+                        <input type="radio" id="plateformec_tres" name="plateformec" value="tres_interesse" required>
+                        <label for="plateformec_tres">Très intéressé(e)</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="equidrive_moyennement" name="equidrive" value="moyennement" required>
-                        <label for="equidrive_moyennement">Moyennement intéressé(e)</label>
+                        <input type="radio" id="plateformec_moyennement" name="plateformec" value="moyennement" required>
+                        <label for="plateformec_moyennement">Moyennement intéressé(e)</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="equidrive_peu" name="equidrive" value="peu_interesse" required>
-                        <label for="equidrive_peu">Peu intéressé(e)</label>
+                        <input type="radio" id="plateformec_peu" name="plateformec" value="peu_interesse" required>
+                        <label for="plateformec_peu">Peu intéressé(e)</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="equidrive_pas" name="equidrive" value="pas_interesse" required>
-                        <label for="equidrive_pas">Pas intéressé(e)</label>
+                        <input type="radio" id="plateformec_pas" name="plateformec" value="pas_interesse" required>
+                        <label for="plateformec_pas">Pas intéressé(e)</label>
                     </div>
                 </div>
-                <div class="error-message" id="error-equidrive">Veuillez sélectionner votre niveau d'intérêt.</div>
+                <div class="error-message" id="error-plateformec">Veuillez sélectionner votre niveau d'intérêt.</div>
             </div>
 
             <!-- Question 6: EquiInvest -->
             <div class="question-group" data-question="6">
-                <div class="question-number">Question 6/8</div>
-                <div class="question">EquiInvest - Investissement participatif dans des chevaux de sport (dès CHF 50.-). Seriez-vous intéressé(e) ? <span class="required">*</span></div>
+                <div class="question-number">Question 6/10</div>
+                <div class="question">Plateforme D - Investissement participatif dans des chevaux de sport (dès CHF 50.-). Seriez-vous intéressé(e) ? <span class="required">*</span></div>
                 <div class="options">
                     <div class="option">
-                        <input type="radio" id="equiinvest_tres" name="equiinvest" value="tres_interesse" required>
-                        <label for="equiinvest_tres">Très intéressé(e)</label>
+                        <input type="radio" id="plateformed_tres" name="plateformed" value="tres_interesse" required>
+                        <label for="plateformed_tres">Très intéressé(e)</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="equiinvest_moyennement" name="equiinvest" value="moyennement" required>
-                        <label for="equiinvest_moyennement">Moyennement intéressé(e)</label>
+                        <input type="radio" id="plateformed_moyennement" name="plateformed" value="moyennement" required>
+                        <label for="plateformed_moyennement">Moyennement intéressé(e)</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="equiinvest_peu" name="equiinvest" value="peu_interesse" required>
-                        <label for="equiinvest_peu">Peu intéressé(e)</label>
+                        <input type="radio" id="plateformed_peu" name="plateformed" value="peu_interesse" required>
+                        <label for="plateformed_peu">Peu intéressé(e)</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="equiinvest_pas" name="equiinvest" value="pas_interesse" required>
-                        <label for="equiinvest_pas">Pas intéressé(e)</label>
+                        <input type="radio" id="plateformed_pas" name="plateformed" value="pas_interesse" required>
+                        <label for="plateformed_pas">Pas intéressé(e)</label>
                     </div>
                 </div>
-                <div class="error-message" id="error-equiinvest">Veuillez sélectionner votre niveau d'intérêt.</div>
+                <div class="error-message" id="error-plateformed">Veuillez sélectionner votre niveau d'intérêt.</div>
             </div>
 
-            <!-- Question 7: Pain points -->
+            <!-- Question 7: Habitudes digitales -->
             <div class="question-group" data-question="7">
-                <div class="question-number">Question 7/8</div>
+                <div class="question-number">Question 7/10</div>
+                <div class="question">Utilisez-vous déjà des plateformes en ligne pour l'équitation ? <span class="required">*</span></div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="digital_oui_souvent" name="habitudes_digital" value="oui_souvent" required>
+                        <label for="digital_oui_souvent">Oui, régulièrement (Ricardo, Anibis, sites spécialisés)</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="digital_oui_parfois" name="habitudes_digital" value="oui_parfois" required>
+                        <label for="digital_oui_parfois">Oui, parfois</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="digital_rarement" name="habitudes_digital" value="rarement" required>
+                        <label for="digital_rarement">Rarement</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="digital_jamais" name="habitudes_digital" value="jamais" required>
+                        <label for="digital_jamais">Jamais, je préfère le contact direct</label>
+                    </div>
+                </div>
+                <div class="error-message" id="error-habitudes_digital">Veuillez sélectionner votre usage actuel.</div>
+            </div>
+
+            <!-- Question 8: Géolocalisation -->
+            <div class="question-group" data-question="8">
+                <div class="question-number">Question 8/10</div>
+                <div class="question">Dans quel canton pratiquez-vous principalement l'équitation ? <span class="required">*</span></div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="canton_vd" name="canton" value="vaud" required>
+                        <label for="canton_vd">Vaud</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="canton_vs" name="canton" value="valais" required>
+                        <label for="canton_vs">Valais</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="canton_ge" name="canton" value="geneve" required>
+                        <label for="canton_ge">Genève</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="canton_fr" name="canton" value="fribourg" required>
+                        <label for="canton_fr">Fribourg</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="canton_ne" name="canton" value="neuchatel" required>
+                        <label for="canton_ne">Neuchâtel</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="canton_other" name="canton" value="autre_suisse" required>
+                        <label for="canton_other">Autre canton suisse</label>
+                    </div>
+                </div>
+                <div class="error-message" id="error-canton">Veuillez sélectionner votre canton principal.</div>
+            </div>
+
+            <!-- Question 9: Pain points -->
+            <div class="question-group" data-question="9">
+                <div class="question-number">Question 9/10</div>
                 <div class="question">Quels sont vos principales difficultés actuelles dans le monde équestre ? (Plusieurs réponses possibles)</div>
                 <div class="options">
                     <div class="option">
@@ -522,20 +580,20 @@
                 </div>
             </div>
 
-            <!-- Question 8: Commentaire libre -->
-            <div class="question-group" data-question="8">
-                <div class="question-number">Question 8/8</div>
+            <!-- Question 10: Commentaire libre -->
+            <div class="question-group" data-question="10">
+                <div class="question-number">Question 10/10</div>
                 <div class="question">Avez-vous des suggestions ou commentaires pour améliorer l'écosystème équestre en Suisse ?</div>
                 <textarea class="text-input" name="commentaire" placeholder="Partagez vos idées, suggestions ou besoins spécifiques..."></textarea>
                 
                 <div class="incentive-box">
                     <h3>🎁 GAGNEZ DU MATÉRIEL ÉQUESTRE !</h3>
-                    <p>Laissez votre email pour participer au tirage au sort et être informé(e) du lancement d'EquiWorld</p>
+                    <p>Laissez votre email pour participer au tirage au sort et être informé(e) du lancement de notre écosystème</p>
                 </div>
                 
                 <input type="email" class="email-input" name="email" placeholder="votre@email.ch" style="margin-top: 15px;">
                 <p style="font-size: 12px; color: #6c757d; margin-top: 8px;">
-                    Vos données sont protégées et ne seront utilisées que pour vous tenir informé(e) d'EquiWorld.
+                    Vos données sont protégées et ne seront utilisées que pour vous tenir informé(e) de notre écosystème équestre.
                 </p>
             </div>
 
@@ -549,14 +607,14 @@
         <div class="thank-you" id="thankYou">
             <h2>🙏 Merci pour votre participation !</h2>
             <p>Vos réponses nous aideront à créer l'écosystème équestre de demain.</p>
-            <p style="margin-top: 15px;">Vous recevrez bientôt des nouvelles d'EquiWorld par email.</p>
+            <p style="margin-top: 15px;">Vous recevrez bientôt des nouvelles de notre projet par email.</p>
             <p style="margin-top: 15px; font-weight: 600; color: #667eea;">Le tirage au sort aura lieu fin septembre 2025 !</p>
         </div>
     </div>
 
     <script>
         let currentQuestion = 1;
-        const totalQuestions = 8;
+        const totalQuestions = 10;
 
         function updateProgressBar() {
             const progress = (currentQuestion / totalQuestions) * 100;
@@ -649,7 +707,7 @@
         }
 
         // Form submission
-        document.getElementById('equiworldForm').addEventListener('submit', function(e) {
+        document.getElementById('equiForm').addEventListener('submit', function(e) {
             if (!validateCurrentQuestion()) {
                 e.preventDefault();
                 return;
