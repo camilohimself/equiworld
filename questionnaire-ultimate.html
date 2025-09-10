@@ -676,12 +676,12 @@
                     <div class="question-number">Q1</div>
                     <h3 class="question-title">Quel est votre profil dans le monde équestre ? <span class="required">*</span></h3>
                     <div class="options grid-2">
-                        <div class="option"><input type="radio" id="profil_1" name="profil" value="cavalier" required><label for="profil_1">Cavalier (Professionnel ou Amateur)</label></div>
-                        <div class="option"><input type="radio" id="profil_2" name="profil" value="parent" required><label for="profil_2">Parent de Cavalier</label></div>
-                        <div class="option"><input type="radio" id="profil_3" name="profil" value="pro_equestre" required><label for="profil_3">Professionnel équestre (Véto, Ostéo, etc.)</label></div>
-                        <div class="option"><input type="radio" id="profil_4" name="profil" value="proprietaire_centre" required><label for="profil_4">Propriétaire/Gérant Centre Équestre</label></div>
-                        <div class="option"><input type="radio" id="profil_5" name="profil" value="commercant" required><label for="profil_5">Commerçant équestre</label></div>
-                        <div class="option"><input type="radio" id="profil_6" name="profil" value="organisateur" required><label for="profil_6">Organisateur/Sponsor</label></div>
+                        <div class="option"><input type="checkbox" id="profil_1" name="profil" value="cavalier"><label for="profil_1">Cavalier (Professionnel ou Amateur)</label></div>
+                        <div class="option"><input type="checkbox" id="profil_2" name="profil" value="parent"><label for="profil_2">Parent de Cavalier</label></div>
+                        <div class="option"><input type="checkbox" id="profil_3" name="profil" value="pro_equestre"><label for="profil_3">Professionnel équestre (Véto, Ostéo, etc.)</label></div>
+                        <div class="option"><input type="checkbox" id="profil_4" name="profil" value="proprietaire_centre"><label for="profil_4">Propriétaire/Gérant Centre Équestre</label></div>
+                        <div class="option"><input type="checkbox" id="profil_5" name="profil" value="commercant"><label for="profil_5">Commerçant équestre</label></div>
+                        <div class="option"><input type="checkbox" id="profil_6" name="profil" value="organisateur"><label for="profil_6">Organisateur/Sponsor</label></div>
                     </div>
                 </div>
 
@@ -744,6 +744,11 @@
                         <div class="option"><input type="checkbox" id="choix_3" name="choix_prestataires" value="recommandation"><label for="choix_3">Recommandations</label></div>
                         <div class="option"><input type="checkbox" id="choix_4" name="choix_prestataires" value="recherche_google"><label for="choix_4">Recherche Google</label></div>
                         <div class="option"><input type="checkbox" id="choix_5" name="choix_prestataires" value="toujours_memes"><label for="choix_5">Je garde toujours les mêmes</label></div>
+                        <div class="option">
+                            <input type="checkbox" id="choix_autre" name="choix_prestataires" value="autre" onchange="toggleAutreField('choix_autre', 'choix_autre_text')">
+                            <label for="choix_autre">Autre</label>
+                            <input type="text" id="choix_autre_text" name="choix_autre_text" placeholder="Précisez..." style="display: none; margin-top: 10px; width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
+                        </div>
                     </div>
                 </div>
 
@@ -861,7 +866,7 @@
 
                 <div class="question-group">
                     <div class="question-number">Q12</div>
-                    <h3 class="question-title">Commission acceptable sur EquiDeal (avec services inclus) ?</h3>
+                    <h3 class="question-title">Quel pourcentage de commission seriez-vous prêt à céder pour bénéficier de cette garantie de prix vérifié (Q11) ?</h3>
                     <div class="options">
                         <div class="option"><input type="radio" id="commission_1" name="commission_deal" value="2-3"><label for="commission_1">2-3% du prix de vente</label></div>
                         <div class="option"><input type="radio" id="commission_2" name="commission_deal" value="3-5"><label for="commission_2">3-5% du prix de vente</label></div>
@@ -1024,10 +1029,19 @@
                 <div class="question-group">
                     <div class="question-number">Contact</div>
                     <h3 class="question-title">Pour être informé du lancement d'EquiWorld</h3>
-                    <input type="email" class="email-input" name="email" placeholder="votre@email.ch" style="margin-bottom: 20px;">
+                    <div style="margin-bottom: 20px;">
+                        <input type="checkbox" id="rester_anonyme" style="margin-bottom: 15px;">
+                        <label for="rester_anonyme" style="cursor: pointer; margin-left: 5px;">Je préfère rester anonyme</label>
+                    </div>
                     
-                    <h4 style="margin: 25px 0 15px 0;">Canton de résidence</h4>
-                    <input type="text" class="email-input" name="canton" placeholder="Ex: Valais, Vaud, Genève...">
+                    <div id="contact_fields">
+                        <input type="text" class="email-input" name="prenom" placeholder="Votre prénom" style="margin-bottom: 15px;">
+                        <input type="text" class="email-input" name="nom" placeholder="Votre nom" style="margin-bottom: 15px;">
+                        <input type="email" class="email-input" name="email" placeholder="votre@email.ch" style="margin-bottom: 20px;">
+                    </div>
+                    
+                    <h4 style="margin: 25px 0 15px 0;">Canton de résidence <span style="color: red;">*</span></h4>
+                    <input type="text" class="email-input" name="canton" placeholder="Ex: Valais, Vaud, Genève..." required>
                     
                     <p style="font-size: 0.9em; color: #6c757d; margin-top: 15px; text-align: center;">
                         Vos données sont protégées et utilisées uniquement pour EquiWorld.
@@ -1129,6 +1143,15 @@
             const requiredInputs = currentSectionEl.querySelectorAll('input[required]');
             let isValid = true;
 
+            // Validation spéciale pour la section 1 - au moins un profil doit être sélectionné
+            if (currentSection === 1) {
+                const profilCheckboxes = document.querySelectorAll('input[name="profil"]:checked');
+                if (profilCheckboxes.length === 0) {
+                    alert('Veuillez sélectionner au moins un profil.');
+                    return false;
+                }
+            }
+
             // Valider les groupes de radio buttons requis
             const radioGroups = {};
             requiredInputs.forEach(input => {
@@ -1137,6 +1160,11 @@
                         radioGroups[input.name] = [];
                     }
                     radioGroups[input.name].push(input);
+                } else if (input.type === 'text' || input.type === 'email') {
+                    if (!input.value.trim()) {
+                        alert(`Veuillez remplir tous les champs obligatoires.`);
+                        isValid = false;
+                    }
                 }
             });
 
@@ -1154,16 +1182,63 @@
 
         function updateConditionalQuestions() {
             // Afficher les questions spécifiques aux organisateurs
-            const profil = document.querySelector('input[name="profil"]:checked');
+            const profilCheckboxes = document.querySelectorAll('input[name="profil"]:checked');
             const organisateurQuestions = document.getElementById('organisateur_questions');
             
-            if (profil && profil.value === 'organisateur') {
+            let hasOrganisateur = false;
+            profilCheckboxes.forEach(checkbox => {
+                if (checkbox.value === 'organisateur') {
+                    hasOrganisateur = true;
+                }
+            });
+            
+            if (hasOrganisateur) {
                 organisateurQuestions.classList.add('show');
             } else {
                 organisateurQuestions.classList.remove('show');
             }
         }
+        
+        // Ajouter un event listener pour les changements de profil
+        document.querySelectorAll('input[name="profil"]').forEach(checkbox => {
+            checkbox.addEventListener('change', updateConditionalQuestions);
+        });
 
+        // Fonction pour gérer les champs "Autre"
+        function toggleAutreField(checkboxId, textFieldId) {
+            const checkbox = document.getElementById(checkboxId);
+            const textField = document.getElementById(textFieldId);
+            if (checkbox && textField) {
+                if (checkbox.checked) {
+                    textField.style.display = 'block';
+                    textField.focus();
+                } else {
+                    textField.style.display = 'none';
+                    textField.value = '';
+                }
+            }
+        }
+        
+        // Gestion de l'option anonyme
+        const resterAnonyme = document.getElementById('rester_anonyme');
+        const contactFields = document.getElementById('contact_fields');
+        
+        if (resterAnonyme) {
+            resterAnonyme.addEventListener('change', function() {
+                if (this.checked) {
+                    contactFields.style.display = 'none';
+                    // Désactiver la validation des champs contact
+                    contactFields.querySelectorAll('input').forEach(input => {
+                        input.removeAttribute('required');
+                    });
+                } else {
+                    contactFields.style.display = 'block';
+                    // Réactiver la validation email
+                    document.querySelector('input[name="email"]').setAttribute('required', 'required');
+                }
+            });
+        }
+        
         // Gestion du rating digital
         document.querySelectorAll('.rating-option').forEach(option => {
             option.addEventListener('click', function() {
