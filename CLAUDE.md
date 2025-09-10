@@ -195,6 +195,17 @@ EQUIWORLD/
 7. ⏳ Créer le pitch deck investisseurs
 8. ⏳ Finaliser et livrer le business plan optimisé
 
+## Infrastructure Technique
+
+### Questionnaires EquiWorld
+- **Repository GitHub**: Disponible et déployé
+- **Hébergement**: Netlify (opérationnel)
+- **Status**: ✅ Questionnaires fonctionnels et prêts à l'utilisation
+- **Versions disponibles**:
+  - `questionnaire-ultimate.html` : Version complète (23 questions, 6 sections)
+  - `questionnaire-equiworld.html` : Version simplifiée (8 questions)
+- **Fonctionnalités**: Formulaires Netlify intégrés, anti-spam, responsive, validation
+
 ## Contacts et Références
 
 - **Client**: Jessy Putallaz (jessy@equiworld.ch - à confirmer)
@@ -204,4 +215,4 @@ EQUIWORLD/
 
 ---
 
-*Document mis à jour le 06/09/2025 - Version 2.0*
+*Document mis à jour le 07/09/2025 - Version 2.1*
