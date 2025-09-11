@@ -1,9 +1,9 @@
 [build]
-  publish = "questionnaire"
+  publish = "."
 
-# Redirect all paths to index.html for SPA behavior
+# Redirect all paths to questionnaire.html
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/questionnaire.html"
   status = 200
   force = false
