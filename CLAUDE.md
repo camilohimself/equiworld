@@ -201,9 +201,8 @@ EQUIWORLD/
 - **Repository GitHub**: Disponible et déployé
 - **Hébergement**: Netlify (opérationnel)
 - **Status**: ✅ Questionnaires fonctionnels et prêts à l'utilisation
-- **Versions disponibles**:
-  - `questionnaire-ultimate.html` : Version complète (23 questions, 6 sections)
-  - `questionnaire-equiworld.html` : Version simplifiée (8 questions)
+- **Version disponible**:
+  - `questionnaire.html` : Version complète (25 questions, 6 sections)
 - **Fonctionnalités**: Formulaires Netlify intégrés, anti-spam, responsive, validation
 
 ## Contacts et Références
