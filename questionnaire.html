@@ -682,6 +682,10 @@
                         <div class="option"><input type="checkbox" id="profil_4" name="profil" value="proprietaire_centre"><label for="profil_4">Propriétaire/Gérant Centre Équestre</label></div>
                         <div class="option"><input type="checkbox" id="profil_5" name="profil" value="commercant"><label for="profil_5">Commerçant équestre</label></div>
                         <div class="option"><input type="checkbox" id="profil_6" name="profil" value="organisateur"><label for="profil_6">Organisateur/Sponsor</label></div>
+                        <div class="option"><input type="checkbox" id="profil_7" name="profil" value="autre"><label for="profil_7">Autre</label></div>
+                    </div>
+                    <div class="other-input" id="profil_autre_input" style="display: none; margin-top: 15px;">
+                        <input type="text" class="text-input" name="profil_autre_detail" placeholder="Précisez votre profil...">
                     </div>
                 </div>
 
@@ -1202,6 +1206,16 @@
         // Ajouter un event listener pour les changements de profil
         document.querySelectorAll('input[name="profil"]').forEach(checkbox => {
             checkbox.addEventListener('change', updateConditionalQuestions);
+        });
+
+        // Gérer l'affichage du champ "Autre" pour les profils
+        document.getElementById('profil_7').addEventListener('change', function() {
+            const autreInput = document.getElementById('profil_autre_input');
+            if (this.checked) {
+                autreInput.style.display = 'block';
+            } else {
+                autreInput.style.display = 'none';
+            }
         });
 
         // Fonction pour gérer les champs "Autre"
