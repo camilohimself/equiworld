@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merci ! - EquiWorld</title>
+    <style>
+        :root {
+            --primary-color: #8B7355;
+            --secondary-color: #A0956B;
+            --accent-color: #C4A77E;
+            --text-color: #4A3F34;
+            --pearl-white: #FBF9F6;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        .container {
+            background: var(--pearl-white);
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(139, 115, 85, 0.2);
+            max-width: 600px;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        p {
+            color: var(--text-color);
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .highlight {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        
+        .info-box {
+            background: rgba(160, 149, 107, 0.1);
+            border: 2px solid var(--accent-color);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--pearl-white);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 115, 85, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏇 Merci infiniment !</h1>
+        
+        <p>Votre participation au questionnaire EquiWorld a été <span class="highlight">enregistrée avec succès</span>.</p>
+        
+        <div class="info-box">
+            <p><strong>Vos réponses vont nous aider à créer l'écosystème équestre de demain !</strong></p>
+            <p>Vous serez parmi les premiers informés du lancement d'EquiWorld et de ses innovations révolutionnaires.</p>
+        </div>
+        
+        <p style="font-size: 1em; color: #6c757d;">
+            Si vous avez des questions ou suggestions, n'hésitez pas à nous contacter.<br>
+            Vos données sont protégées et utilisées uniquement dans le cadre du développement d'EquiWorld.
+        </p>
+        
+        <a href="https://equiworld.ch" class="btn">Découvrir EquiWorld</a>
+    </div>
+    
+    <script>
+        // Redirection automatique après 10 secondes (optionnel)
+        // setTimeout(() => {
+        //     window.location.href = 'https://equiworld.ch';
+        // }, 10000);
+    </script>
+</body>
+</html>
