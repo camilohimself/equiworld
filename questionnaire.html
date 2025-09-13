@@ -173,8 +173,23 @@
             font-size: 1.1em;
             color: #6c757d;
             max-width: 600px;
-            margin: 0 auto;
+            margin: 0 auto 15px auto;
             line-height: 1.7;
+        }
+
+        .progress-info {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .time-estimate {
+            background: rgba(139, 115, 85, 0.1);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            display: inline-block;
         }
 
         .question-group {
@@ -269,6 +284,17 @@
             border-color: var(--primary-color);
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(139, 115, 85, 0.15);
+        }
+
+        /* Animation de sélection */
+        .option input:checked + label {
+            animation: selectPulse 0.3s ease-out;
+        }
+
+        @keyframes selectPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
         }
         
         /* Mobile touch optimization */
@@ -704,8 +730,11 @@
             <!-- SECTION 1: PROFIL -->
             <div class="section active" data-section="1">
                 <div class="section-header">
-                    <h2 class="section-title">Votre Profil</h2>
-                    <p class="section-description">Aidez-nous à mieux vous comprendre pour adapter nos solutions à vos besoins</p>
+                    <h2 class="section-title">🎯 Votre Profil</h2>
+                    <p class="section-description">Aidez-nous à personnaliser votre expérience EquiWorld</p>
+                    <div class="progress-info">
+                        <span class="time-estimate">⏱️ 6-8 minutes • Questions adaptées à votre profil</span>
+                    </div>
                 </div>
 
                 <div class="question-group">
@@ -739,27 +768,28 @@
 
                 <div class="question-group">
                     <div class="question-number">Q3</div>
-                    <h3 class="question-title">Votre niveau de confort avec les outils digitaux</h3>
+                    <h3 class="question-title">Êtes-vous plutôt Team Digital ou Team Papier-Crayon ? 😄</h3>
+                    <p class="question-subtitle">Votre niveau de confort avec les outils digitaux</p>
                     <div class="rating-container">
                         <div class="rating-options">
                             <div class="rating-option" data-rating="1">
-                                <div class="rating-circle">1</div>
-                                <div class="rating-label">Novice</div>
+                                <div class="rating-circle">📄</div>
+                                <div class="rating-label">Papier</div>
                             </div>
                             <div class="rating-option" data-rating="2">
-                                <div class="rating-circle">2</div>
+                                <div class="rating-circle">📱</div>
                                 <div class="rating-label">Débutant</div>
                             </div>
                             <div class="rating-option" data-rating="3">
-                                <div class="rating-circle">3</div>
+                                <div class="rating-circle">💻</div>
                                 <div class="rating-label">Moyen</div>
                             </div>
                             <div class="rating-option" data-rating="4">
-                                <div class="rating-circle">4</div>
+                                <div class="rating-circle">⚡</div>
                                 <div class="rating-label">Avancé</div>
                             </div>
                             <div class="rating-option" data-rating="5">
-                                <div class="rating-circle">5</div>
+                                <div class="rating-circle">🚀</div>
                                 <div class="rating-label">Expert</div>
                             </div>
                         </div>
@@ -770,8 +800,8 @@
             <!-- SECTION 2: EQUI BOOK -->
             <div class="section" data-section="2">
                 <div class="section-header">
-                    <h2 class="section-title">EquiBook - "Le Google équestre suisse"</h2>
-                    <p class="section-description">Annuaire interactif des professionnels du monde équestre</p>
+                    <h2 class="section-title">📖 EquiBook - "Le Google équestre"</h2>
+                    <p class="section-description">Comment trouvez-vous vos prestataires équestres actuellement ?</p>
                 </div>
 
                 <div class="question-group">
@@ -851,8 +881,8 @@
             <!-- SECTION 3: EQUI DEAL -->
             <div class="section" data-section="3">
                 <div class="section-header">
-                    <h2 class="section-title">EquiDeal - Marketplace équestre</h2>
-                    <p class="section-description">Plateforme de vente/achat de chevaux et matériel avec certification</p>
+                    <h2 class="section-title">🏪 EquiDeal - Marketplace</h2>
+                    <p class="section-description">Vente/achat sécurisé avec certification prix par experts</p>
                 </div>
 
                 <div class="question-group">
@@ -1154,11 +1184,29 @@
         let digitalRating = 0;
         let transportFrequency = null;
 
-        // Navigation entre sections
+        // Système de questionnaire adaptatif basé sur le profil
+        let userProfile = [];
+        let questionsToSkip = [];
+        let totalQuestions = 25;
+
+        // Navigation entre sections avec feedback amélioré
         function updateProgress() {
             const progress = (currentSection / totalSections) * 100;
             document.getElementById('progressBar').style.width = progress + '%';
-            document.getElementById('progressText').textContent = `Section ${currentSection}/${totalSections}`;
+
+            // Texte de progression plus engageant
+            const sectionNames = ['', 'Profil', 'EquiBook', 'EquiDeal', 'EquiDrive', 'EquiJob & Invest', 'Finalisation'];
+            const progressText = document.getElementById('progressText');
+
+            if (currentSection === totalSections) {
+                progressText.innerHTML = `🎉 <strong>Dernière étape !</strong>`;
+            } else {
+                progressText.innerHTML = `📍 ${sectionNames[currentSection]} • ${currentSection}/${totalSections}`;
+            }
+
+            // Animation de la barre de progression
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.transition = 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
         }
 
         function showSection(sectionNum) {
@@ -1253,21 +1301,57 @@
         }
 
         function updateConditionalQuestions() {
-            // Afficher les questions spécifiques aux organisateurs
+            // Collecter les profils sélectionnés
             const profilCheckboxes = document.querySelectorAll('input[name="profil"]:checked');
+            userProfile = Array.from(profilCheckboxes).map(cb => cb.value);
+
+            // Questions conditionnelles
             const organisateurQuestions = document.getElementById('organisateur_questions');
-            
-            let hasOrganisateur = false;
-            profilCheckboxes.forEach(checkbox => {
-                if (checkbox.value === 'organisateur') {
-                    hasOrganisateur = true;
-                }
-            });
-            
+
+            // Logique pour organisateurs
+            let hasOrganisateur = userProfile.includes('organisateur');
             if (hasOrganisateur) {
                 organisateurQuestions.classList.add('show');
             } else {
                 organisateurQuestions.classList.remove('show');
+            }
+
+            // Calculer les questions à ignorer selon le profil
+            calculateAdaptiveQuestions();
+        }
+
+        function calculateAdaptiveQuestions() {
+            questionsToSkip = [];
+
+            // Si pas propriétaire centre/pro équestre → skip EquiJob (Q18-19)
+            if (!userProfile.includes('proprietaire_centre') && !userProfile.includes('pro_equestre')) {
+                questionsToSkip.push('recrutement_freq', 'assurance_remplacants');
+            }
+
+            // Si budget < 5k → skip certaines questions investment
+            const budgetInput = document.querySelector('input[name="budget"]:checked');
+            if (budgetInput && budgetInput.value === '0-5k') {
+                questionsToSkip.push('experience_invest', 'montant_invest');
+            }
+
+            // Si "jamais vendu/acheté" → skip certaines questions EquiDeal
+            const venteInput = document.querySelector('input[id="vente_6"]:checked');
+            const achatInput = document.querySelector('input[id="achat_6"]:checked');
+            if (venteInput && achatInput) {
+                questionsToSkip.push('duree_vente', 'commission_deal');
+            }
+
+            updateProgressEstimate();
+        }
+
+        function updateProgressEstimate() {
+            const skippedCount = questionsToSkip.length;
+            const estimatedQuestions = totalQuestions - skippedCount;
+            const estimatedTime = Math.ceil(estimatedQuestions * 0.3); // ~18 secondes par question
+
+            const timeElement = document.querySelector('.time-estimate');
+            if (timeElement && estimatedTime > 0) {
+                timeElement.textContent = `⏱️ ${estimatedTime} minutes restantes • ${estimatedQuestions} questions personnalisées`;
             }
         }
         
@@ -1321,7 +1405,7 @@
             });
         }
         
-        // Gestion du rating digital
+        // Gestion du rating digital avec feedback
         document.querySelectorAll('.rating-option').forEach(option => {
             option.addEventListener('click', function() {
                 digitalRating = parseInt(this.dataset.rating);
@@ -1329,8 +1413,47 @@
                     circle.classList.remove('selected');
                 });
                 this.querySelector('.rating-circle').classList.add('selected');
+
+                // Feedback visuel micro-interaction
+                showMicroFeedback(this, '✨');
             });
         });
+
+        // Fonction de micro-feedback visuel
+        function showMicroFeedback(element, icon) {
+            const feedback = document.createElement('div');
+            feedback.innerHTML = icon;
+            feedback.style.cssText = `
+                position: absolute;
+                top: -20px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: var(--primary-color);
+                font-size: 1.2em;
+                pointer-events: none;
+                animation: feedbackPop 0.6s ease-out forwards;
+                z-index: 1000;
+            `;
+
+            element.style.position = 'relative';
+            element.appendChild(feedback);
+
+            // Nettoyer après animation
+            setTimeout(() => {
+                if (feedback.parentNode) feedback.remove();
+            }, 600);
+        }
+
+        // CSS pour l'animation de feedback
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes feedbackPop {
+                0% { opacity: 0; transform: translate(-50%, 10px) scale(0.8); }
+                50% { opacity: 1; transform: translate(-50%, -15px) scale(1.1); }
+                100% { opacity: 0; transform: translate(-50%, -25px) scale(0.9); }
+            }
+        `;
+        document.head.appendChild(style);
 
         // Gestion du NPS
         document.querySelectorAll('.nps-number').forEach(number => {
